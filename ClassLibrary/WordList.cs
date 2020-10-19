@@ -102,6 +102,7 @@ namespace ClassLibrary
             words.Add(new Word(translations));
         }
 
+        //Fungerar
         public bool Remove(int translation, string word)
         {
             LoadList(Name);
@@ -125,10 +126,15 @@ namespace ClassLibrary
             return words.Count();
         }
 
+        //Fungerar
         public void List(int sortByTranslation, Action<string[]> showTranslations)
         {
-            //sortByTranslation = Vilket språk listan ska sorteras på.
-            //showTranslations = Callback som anropas för varje ord i listan.
+            List<Word> sortedListOfWords = words.OrderBy(word => word.Translations[sortByTranslation]).ToList();
+
+            foreach (Word word in sortedListOfWords)
+            {
+                showTranslations(word.Translations);
+            }
         }
 
         //Fungerar
@@ -141,17 +147,14 @@ namespace ClassLibrary
             while (fromLanguage == toLanguage)
             {
                 toLanguage = rndLanguage.Next(0, Languages.Length);
-
             }
+
+            string[] wordsToPracticeWith = new string[2] { words[fromLanguage].Translations[fromLanguage],
+                words[fromLanguage].Translations[toLanguage] };
             
-            string[] wordsToPracticeWith = new string[2] { words[fromLanguage].Translations[fromLanguage], words[fromLanguage].Translations[toLanguage] };
             Word wordsForPractice = new Word(fromLanguage, toLanguage, wordsToPracticeWith);
-            
+
             return wordsForPractice;
         }
-
-
-
-
     }
 }

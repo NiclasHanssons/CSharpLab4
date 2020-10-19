@@ -9,7 +9,7 @@ namespace ClassLibrary
 {
     public class MethodsForConsoleApp
     {
-        //Metod för att lista alla ordlistor - FUNGERAR
+        //Metod för att lista alla ordlistor
         public static void ShowLists()
         {
             Console.WriteLine("These are your wordlists.");
@@ -19,7 +19,7 @@ namespace ClassLibrary
             }
         }
 
-        //Metod för att skapa ny ordlista med valfritt antal språk - FUNGERAR
+        //Metod för att skapa ny ordlista med valfritt antal språk
         public static void NewListAndLanguages(string[] argsArguments)
         {
             if (File.Exists(AppFolder.LocalAppFolder + argsArguments[1] + ".dat"))
@@ -50,7 +50,7 @@ namespace ClassLibrary
             AddWordsToList(newList);
         }
 
-        //Metod för att lägga till ord till befintlig lista - FUNGERAR
+        //Metod för att lägga till ord till befintlig lista
         public static void AddWordsToList(string listName)
         {
             WordList loadedList = WordList.LoadList(listName);
@@ -62,7 +62,7 @@ namespace ClassLibrary
 
                 for (int i = 0; i < loadedList.Languages.Length; i++)
                 {
-                    Console.Write($"Ange ord för {loadedList.Languages[i]}: ");
+                    Console.Write($"Write a word in {loadedList.Languages[i]}: ");
                     word = Console.ReadLine();
 
                     if (word == "")
@@ -83,14 +83,14 @@ namespace ClassLibrary
             loadedList.Save();
         }
 
-        //Metod för att räkna ord i befintlig lista - FUNGERAR
+        //Metod för att räkna ord i befintlig lista
         public static void CountWords(string listName)
         {
             WordList loadedListForCount = WordList.LoadList(listName);
             Console.WriteLine($"Words in {listName}: {loadedListForCount.Count()}");
         }
 
-        //Metod för att tabort ett eller flera ord från en lista - FUNGERAR
+        //Metod för att tabort ett eller flera ord från en lista
         public static void RemoveWords(string listName, string[] argsArguments)
         {
             WordList listForRemoveWord = WordList.LoadList(listName);
@@ -118,7 +118,7 @@ namespace ClassLibrary
             }
         }
 
-        //Metod för att träna på slumpade ord från en specifik lista - FUNGERAR
+        //Metod för att träna på slumpade ord från en specifik lista
         public static void Practice(string listName)
         {
             WordList wordForPractice = WordList.LoadList(listName);
@@ -130,13 +130,13 @@ namespace ClassLibrary
             do
             {
                 Console.Clear();
-                Console.WriteLine($"Öva på glosorna genom att skriv översättningen på ordet, avbryt genom att trycka \"enter\".");
-                Console.WriteLine("Efter avslutad övning får du se ditt resultat.");
+                Console.WriteLine($"Practice vocabulary by writing the translation, quit be press \"enter\" on a empty line.");
+                Console.WriteLine("After practice you will see your result.");
                 Console.WriteLine();
                 
                 Word word = wordForPractice.GetWordToPractice();
-                Console.WriteLine($"Ord på {wordForPractice.Languages[word.FromLanguage]}: {word.Translations[0]}");
-                Console.Write($"Till {wordForPractice.Languages[word.ToLanguage]}: ");
+                Console.WriteLine($"Word in {wordForPractice.Languages[word.FromLanguage]}: {word.Translations[0]}");
+                Console.Write($"To {wordForPractice.Languages[word.ToLanguage]}: ");
                 wordTranslated = Console.ReadLine();
                 numberOfWordsTranslated++;
                 
@@ -155,9 +155,51 @@ namespace ClassLibrary
             double correctAnswersInProcent = (correctTranslation / numberOfWordsTranslated) * 100;
 
             Console.WriteLine();
-            Console.WriteLine($"Antal ord du tränat på: {numberOfWordsTranslated}");
-            Console.WriteLine($"Antal rätt översättningar: {correctTranslation}");
-            Console.WriteLine($"Din översättningsfrekvens blev: {correctAnswersInProcent:F1}%");
+            Console.WriteLine($"Number of words you practiced: {numberOfWordsTranslated}");
+            Console.WriteLine($"Correct amount of translations: {correctTranslation}");
+            Console.WriteLine($"Your score: {correctAnswersInProcent:F1}%");
+        }
+
+        //Metod för att lista alla ord sorterade efter språk
+        public static void ListWordsAlphabetically(string listName, string[] argsArgument)
+        {
+            WordList sortByLanguage = WordList.LoadList(listName);
+            string language = argsArgument[2];
+            int languageIndex = 0;
+            
+            for (int i = 0; i < sortByLanguage.Languages.Length; i++)
+            {
+                if (language == sortByLanguage.Languages[i])
+                {
+                    languageIndex = i;
+                    break;
+                }
+            }
+            
+            int changeRow = 0;
+
+            for (int i = 0; i < sortByLanguage.Languages.Length; i++)
+            {
+                Console.Write($"{sortByLanguage.Languages[i],-20}");
+            }
+            Console.WriteLine();
+
+            Action<string[]> printWords = (input) =>
+            {
+                if (changeRow == sortByLanguage.Languages.Length)
+                {
+                    Console.WriteLine();
+                    changeRow = 0;
+                }
+
+                for (int i = 0; i < input.Length; i++)
+                {
+                    changeRow++;
+                    Console.Write($"{input[i],-20}");
+                }
+            };
+
+            sortByLanguage.List(languageIndex, printWords);
         }
     }
 

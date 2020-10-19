@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -9,16 +10,6 @@ using System.Threading.Tasks;
 
 namespace Lab4
 {
-    /** Tips och råd
-    Håll rent i din kod genom att använda regions och block-kommentarer:
-
-    Använd "[hastag]region" och "[hashtag]endregion" för att skapa block som du kan minimera.
-    Använd "[backward slash][asterisk][asterisk]" och "[asterisk][backward slash]" för att skapa block-kommentarer som du kan minimera.
-
-    Försök använda identifiers som beskriver innehåll eller funktion.
-    Unvik att "kommentera ut" för mycket kod och färstidställa något innan du fortsätter med något annat.
-    Bestäm ett system för kommentarer till koden, så att det blir enkelt för ögonen att direkt se vad som är vad.
-    */
 
     class Program
     {
@@ -34,7 +25,6 @@ namespace Lab4
             Console.WriteLine("-practice <listname>");
         }
 
-        //Switch, läser in från args där index 0 blir menyval.
         private static void ConsoleAppListChoice(string listChoice, string[] argsArguments)
         {
             switch (listChoice)
@@ -56,7 +46,7 @@ namespace Lab4
                     break;
 
                 case "-words":
-                    Console.WriteLine("Words is under construction");
+                    MethodsForConsoleApp.ListWordsAlphabetically(argsArguments[1], argsArguments);
                     break;
 
                 case "-count":
@@ -76,29 +66,17 @@ namespace Lab4
         static void Main(string[] args)
         {
             AppFolder.CheckForLocalDirectory();
-            //Kommentera ut dessa när testing av metoder görs
 
+            if (args.Length != 0)
+            {
+            string argsInput = args[0].ToString();
+            ConsoleAppListChoice(argsInput, args);
+            }
 
-
-            //string argsInput = args[0].ToString();
-            //ConsoleAppListChoice(argsInput, args);
-
-
-
-
-            #region Test av GetWordToPractice metoden
-            /*
-            WordList wordForPracticeTest = WordList.LoadList("animalsDictionary");
-            Word testingWord = wordForPracticeTest.GetWordToPractice();
-
-            Console.WriteLine(wordForPracticeTest.Languages[testingWord.FromLanguage]);
-            Console.WriteLine(wordForPracticeTest.Languages[testingWord.ToLanguage]);
-            Console.WriteLine($"Ord som skall översättas: {testingWord.Translations[0]}");
-            Console.WriteLine($"Översättning är: {testingWord.Translations[1]}");
-            */
-
-            #endregion
-            MethodsForConsoleApp.Practice("svEnFrSp");
+            else
+            {
+                MenuList();
+            }
 
             Console.ReadKey();
         }
