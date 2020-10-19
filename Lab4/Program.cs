@@ -52,7 +52,7 @@ namespace Lab4
                     break;
 
                 case "-remove":
-                    Console.WriteLine("Remove is under construction");
+                    MethodsForConsoleApp.RemoveWords(argsArguments[1], argsArguments);
                     break;
 
                 case "-words":
@@ -64,7 +64,7 @@ namespace Lab4
                     break;
 
                 case "-practice":
-                    Console.WriteLine("Practice is under construction");
+                    MethodsForConsoleApp.Practice(argsArguments[1]);
                     break;
 
                 default:
@@ -76,12 +76,30 @@ namespace Lab4
         static void Main(string[] args)
         {
             AppFolder.CheckForLocalDirectory();
-            
-            
             //Kommentera ut dessa när testing av metoder görs
-            string argsInput = args[0].ToString();
-            ConsoleAppListChoice(argsInput, args);
-            
+
+
+
+            //string argsInput = args[0].ToString();
+            //ConsoleAppListChoice(argsInput, args);
+
+
+
+
+            #region Test av GetWordToPractice metoden
+            /*
+            WordList wordForPracticeTest = WordList.LoadList("animalsDictionary");
+            Word testingWord = wordForPracticeTest.GetWordToPractice();
+
+            Console.WriteLine(wordForPracticeTest.Languages[testingWord.FromLanguage]);
+            Console.WriteLine(wordForPracticeTest.Languages[testingWord.ToLanguage]);
+            Console.WriteLine($"Ord som skall översättas: {testingWord.Translations[0]}");
+            Console.WriteLine($"Översättning är: {testingWord.Translations[1]}");
+            */
+
+            #endregion
+            MethodsForConsoleApp.Practice("svEnFrSp");
+
             Console.ReadKey();
         }
     }

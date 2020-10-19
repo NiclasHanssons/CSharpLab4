@@ -89,6 +89,76 @@ namespace ClassLibrary
             WordList loadedListForCount = WordList.LoadList(listName);
             Console.WriteLine($"Words in {listName}: {loadedListForCount.Count()}");
         }
+
+        //Metod för att tabort ett eller flera ord från en lista - FUNGERAR
+        public static void RemoveWords(string listName, string[] argsArguments)
+        {
+            WordList listForRemoveWord = WordList.LoadList(listName);
+            string language = argsArguments[2];
+            int languageForRemoveAsIndex = 0;
+
+            for (int i = 0; i < listForRemoveWord.Languages.Length; i++)
+            {
+                if (listForRemoveWord.Languages[i] == language)
+                {
+                    languageForRemoveAsIndex = i;
+                }
+            }
+
+            for (int i = 3; i < argsArguments.Length; i++)
+            {
+                if (listForRemoveWord.Remove(languageForRemoveAsIndex, argsArguments[i]))
+                {
+                    Console.WriteLine($"Your word {argsArguments[i]} is removed.");
+                }
+                else
+                {
+                    Console.WriteLine($"Your word {argsArguments[i]} was not in the list.");
+                }
+            }
+        }
+
+        //Metod för att träna på slumpade ord från en specifik lista - FUNGERAR
+        public static void Practice(string listName)
+        {
+            WordList wordForPractice = WordList.LoadList(listName);
+
+            double correctTranslation = 0.0;
+            double numberOfWordsTranslated = 0.0;
+            string wordTranslated = "";
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine($"Öva på glosorna genom att skriv översättningen på ordet, avbryt genom att trycka \"enter\".");
+                Console.WriteLine("Efter avslutad övning får du se ditt resultat.");
+                Console.WriteLine();
+                
+                Word word = wordForPractice.GetWordToPractice();
+                Console.WriteLine($"Ord på {wordForPractice.Languages[word.FromLanguage]}: {word.Translations[0]}");
+                Console.Write($"Till {wordForPractice.Languages[word.ToLanguage]}: ");
+                wordTranslated = Console.ReadLine();
+                numberOfWordsTranslated++;
+                
+                if (wordTranslated == "")
+                {
+                    break;
+                }
+
+                if (wordTranslated == word.Translations[1])
+                {
+                    correctTranslation++;
+                }
+
+            } while (wordTranslated != "");
+
+            double correctAnswersInProcent = (correctTranslation / numberOfWordsTranslated) * 100;
+
+            Console.WriteLine();
+            Console.WriteLine($"Antal ord du tränat på: {numberOfWordsTranslated}");
+            Console.WriteLine($"Antal rätt översättningar: {correctTranslation}");
+            Console.WriteLine($"Din översättningsfrekvens blev: {correctAnswersInProcent:F1}%");
+        }
     }
 
 }

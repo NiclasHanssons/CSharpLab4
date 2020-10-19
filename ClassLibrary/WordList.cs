@@ -102,10 +102,22 @@ namespace ClassLibrary
             words.Add(new Word(translations));
         }
 
-        //public bool Remove(int translation, string word)
-        //{
-        ////translation motsvarar index i Languages. Sök igenom språket och ta bort ordet. 
-        //}
+        public bool Remove(int translation, string word)
+        {
+            LoadList(Name);
+
+            for (int i = 0; i < words.Count; i++)
+            {
+                if (words[i].Translations[translation] == word)
+                {
+                    words.RemoveAt(i);
+                    Save();
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         //Fungerar
         public int Count()
@@ -119,11 +131,24 @@ namespace ClassLibrary
             //showTranslations = Callback som anropas för varje ord i listan.
         }
 
-        //public Word GetWordToPractice()
-        //{
-        ////Returnerar slumpmässigt Word från listan, med slumpmässigt valda
-        ////FromLanguage och ToLanguage(dock inte samma). 
-        //}
+        //Fungerar
+        public Word GetWordToPractice()
+        {
+            Random rndLanguage = new Random();
+            int fromLanguage = rndLanguage.Next(0, Languages.Length);
+            int toLanguage = rndLanguage.Next(0, Languages.Length);
+
+            while (fromLanguage == toLanguage)
+            {
+                toLanguage = rndLanguage.Next(0, Languages.Length);
+
+            }
+            
+            string[] wordsToPracticeWith = new string[2] { words[fromLanguage].Translations[fromLanguage], words[fromLanguage].Translations[toLanguage] };
+            Word wordsForPractice = new Word(fromLanguage, toLanguage, wordsToPracticeWith);
+            
+            return wordsForPractice;
+        }
 
 
 
