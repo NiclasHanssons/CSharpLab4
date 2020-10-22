@@ -65,7 +65,7 @@ namespace Lab4
         }
         static void Main(string[] args)
         {
-            AppFolder.CheckForLocalDirectory();
+            WordList.CheckForLocalDirectory();
 
             if (args.Length != 0)
             {

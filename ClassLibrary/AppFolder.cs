@@ -13,11 +13,11 @@ namespace ClassLibrary
 
         public string DirectoryCreator { get; set; }
 
-        public static void CheckForLocalDirectory()
-        {
-            string ProjectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
-            LocalAppFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ProjectName + "\\");
-            Directory.CreateDirectory(LocalAppFolder);
-        }
+        //public static void CheckForLocalDirectory()
+        //{
+        //    string ProjectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+        //    LocalAppFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ProjectName + "\\");
+        //    Directory.CreateDirectory(LocalAppFolder);
+        //}
     }
 }

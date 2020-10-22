@@ -7,26 +7,22 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class MethodsForConsoleApp
+    public class MethodsForWinFormApp
     {
-        //Metod för att lista alla ordlistor
-        public static void ShowLists()
+        //FUNGERAR
+        public static string[] ShowLists()
         {
-            Console.WriteLine("These are your wordlists.");
-            foreach (string file in WordList.GetLists())
-            {
-                Console.WriteLine(Path.GetFileNameWithoutExtension(file));
-            }
+            return WordList.GetLists();
         }
 
-        //Metod för att skapa ny ordlista med valfritt antal språk
+        //Ej fixad för winform NewListAndLanguages
         public static void NewListAndLanguages(string[] argsArguments)
         {
-            if (File.Exists(WordList.LocalAppFolder + argsArguments[1] + ".dat"))
-            {
-                Console.WriteLine($"File {argsArguments[1]} already exists, please try <-Add> <{argsArguments[1]}> to add words.");
-                return;
-            }
+            //if (File.Exists(LocalAppFolder + argsArguments[1] + ".dat"))
+            //{
+            //    Console.WriteLine($"File {argsArguments[1]} already exists, please try <-Add> <{argsArguments[1]}> to add words.");
+            //    return;
+            //}
 
             string newList = argsArguments[1];
             var languagesArray = new string[argsArguments.Length - 2];
@@ -50,7 +46,7 @@ namespace ClassLibrary
             AddWordsToList(newList);
         }
 
-        //Metod för att lägga till ord till befintlig lista
+        //Ej fixad för winform
         public static void AddWordsToList(string listName)
         {
             WordList loadedList = WordList.LoadList(listName);
@@ -83,14 +79,14 @@ namespace ClassLibrary
             loadedList.Save();
         }
 
-        //Metod för att räkna ord i befintlig lista
-        public static void CountWords(string listName)
+        //FUNGERAR
+        public static int CountWords(string listName)
         {
             WordList loadedListForCount = WordList.LoadList(listName);
-            Console.WriteLine($"Words in {listName}: {loadedListForCount.Count()}");
+            return loadedListForCount.Count();
         }
 
-        //Metod för att tabort ett eller flera ord från en lista
+        //Ej fixad för winform
         public static void RemoveWords(string listName, string[] argsArguments)
         {
             WordList listForRemoveWord = WordList.LoadList(listName);
@@ -118,7 +114,7 @@ namespace ClassLibrary
             }
         }
 
-        //Metod för att träna på slumpade ord från en specifik lista
+        //Ej fixad för winform
         public static void Practice(string listName)
         {
             WordList wordForPractice = WordList.LoadList(listName);
@@ -133,13 +129,13 @@ namespace ClassLibrary
                 Console.WriteLine($"Practice vocabulary by writing the translation, quit be press \"enter\" on a empty line.");
                 Console.WriteLine("After practice you will see your result.");
                 Console.WriteLine();
-                
+
                 Word word = wordForPractice.GetWordToPractice();
                 Console.WriteLine($"Word in {wordForPractice.Languages[word.FromLanguage]}: {word.Translations[0]}");
                 Console.Write($"To {wordForPractice.Languages[word.ToLanguage]}: ");
                 wordTranslated = Console.ReadLine();
                 numberOfWordsTranslated++;
-                
+
                 if (wordTranslated == "")
                 {
                     break;
@@ -160,46 +156,23 @@ namespace ClassLibrary
             Console.WriteLine($"Your score: {correctAnswersInProcent:F1}%");
         }
 
-        //Metod för att lista alla ord sorterade efter språk
-        public static void ListWordsAlphabetically(string listName, string[] argsArgument)
+        //Ej fixad för winform
+        public static string[] ListWordsAlphabetically(string listName)
         {
-            WordList sortByLanguage = WordList.LoadList(listName);
-            string language = argsArgument[2];
-            int languageIndex = 0;
+            WordList wordList = WordList.LoadList(listName);
+            List<string> words = new List<string>();
             
-            for (int i = 0; i < sortByLanguage.Languages.Length; i++)
+            Action<string[]> allWords = (input) =>
             {
-                if (language == sortByLanguage.Languages[i])
+                foreach (var word in input)
                 {
-                    languageIndex = i;
-                    break;
-                }
-            }
-            
-            int changeRow = 0;
-
-            for (int i = 0; i < sortByLanguage.Languages.Length; i++)
-            {
-                Console.Write($"{sortByLanguage.Languages[i],-20}");
-            }
-            Console.WriteLine();
-
-            Action<string[]> printWords = (input) =>
-            {
-                if (changeRow == sortByLanguage.Languages.Length)
-                {
-                    Console.WriteLine();
-                    changeRow = 0;
-                }
-
-                for (int i = 0; i < input.Length; i++)
-                {
-                    changeRow++;
-                    Console.Write($"{input[i],-20}");
+                    words.Add(word);
                 }
             };
 
-            sortByLanguage.List(languageIndex, printWords);
+            wordList.List(0, allWords);
+
+            return words.ToArray();
         }
     }
 }

@@ -15,6 +15,9 @@ namespace ClassLibrary
 
         private List<Word> words = new List<Word>();
 
+        public static string LocalAppFolder { get; private set; }
+
+
         public WordList()
         {
 
@@ -26,10 +29,18 @@ namespace ClassLibrary
             Languages = languages;
         }
 
+        public static void CheckForLocalDirectory()
+        {
+            string ProjectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+            LocalAppFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), ProjectName + "\\");
+            Directory.CreateDirectory(LocalAppFolder);
+        }
+
         //Fungerar
         public static string[] GetLists()
         {
-            string[] files = Directory.GetFiles(AppFolder.LocalAppFolder);
+            CheckForLocalDirectory();
+            string[] files = Directory.GetFiles(LocalAppFolder);
             return files;
         }
 
@@ -39,17 +50,17 @@ namespace ClassLibrary
             string fileName = Name;
             string newList = fileName + ".dat";
 
-            if (!File.Exists(AppFolder.LocalAppFolder + newList))
+            if (!File.Exists(LocalAppFolder + newList))
             {
-                using (StreamWriter sw = new StreamWriter(AppFolder.LocalAppFolder + newList))
+                using (StreamWriter sw = new StreamWriter(LocalAppFolder + newList))
                 {
                     sw.WriteLine();
                 }
             }
 
-            if (File.Exists(AppFolder.LocalAppFolder + newList))
+            if (File.Exists(LocalAppFolder + newList))
             {
-                using (StreamWriter sw = new StreamWriter(AppFolder.LocalAppFolder + newList))
+                using (StreamWriter sw = new StreamWriter(LocalAppFolder + newList))
                 {
                     foreach (var item in Languages)
                     {
@@ -58,7 +69,7 @@ namespace ClassLibrary
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter(AppFolder.LocalAppFolder + newList, append: true))
+            using (StreamWriter sw = new StreamWriter(LocalAppFolder + newList, append: true))
             {
                 foreach (var word in words)
                 {
@@ -78,7 +89,7 @@ namespace ClassLibrary
         {
             string[] loadedListLangugages;
 
-            using (StreamReader sr = new StreamReader(AppFolder.LocalAppFolder + name + ".dat"))
+            using (StreamReader sr = new StreamReader(LocalAppFolder + name + ".dat"))
             {
                 loadedListLangugages = sr.ReadLine().TrimEnd(';').Split(';');
                 WordList loadedList = new WordList(name, loadedListLangugages);
