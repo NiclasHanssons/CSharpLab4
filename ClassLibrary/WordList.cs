@@ -106,10 +106,10 @@ namespace ClassLibrary
         //Fungerar
         public void Add(params string[] translations)
         {
-            if (translations.Length % Languages.Length != 0)
-            {
-                throw new Exception("Not the correct number of words");
-            }
+            //if (translations.Length % Languages.Length != 0)
+            //{
+            //    throw new Exception("Not the correct number of words");
+            //}
             words.Add(new Word(translations));
         }
 

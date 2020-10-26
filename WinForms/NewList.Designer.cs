@@ -64,9 +64,9 @@
             // buttonNewListOk
             // 
             this.buttonNewListOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonNewListOk.Location = new System.Drawing.Point(158, 226);
+            this.buttonNewListOk.Location = new System.Drawing.Point(177, 226);
             this.buttonNewListOk.Name = "buttonNewListOk";
-            this.buttonNewListOk.Size = new System.Drawing.Size(94, 31);
+            this.buttonNewListOk.Size = new System.Drawing.Size(75, 25);
             this.buttonNewListOk.TabIndex = 4;
             this.buttonNewListOk.Text = "&OK";
             this.buttonNewListOk.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             this.buttonNewListCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonNewListCancel.Location = new System.Drawing.Point(12, 226);
             this.buttonNewListCancel.Name = "buttonNewListCancel";
-            this.buttonNewListCancel.Size = new System.Drawing.Size(94, 31);
+            this.buttonNewListCancel.Size = new System.Drawing.Size(75, 25);
             this.buttonNewListCancel.TabIndex = 5;
             this.buttonNewListCancel.Text = "&Cancel";
             this.buttonNewListCancel.UseVisualStyleBackColor = true;
@@ -94,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 275);
+            this.ClientSize = new System.Drawing.Size(264, 260);
             this.Controls.Add(this.textBoxLanguages);
             this.Controls.Add(this.buttonNewListCancel);
             this.Controls.Add(this.buttonNewListOk);
@@ -103,7 +103,7 @@
             this.Controls.Add(this.textBoxNewList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "NewList";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New list";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinForms
 {
-    public partial class Form1 : Form
+    public partial class DictionaryApp : Form
     {
-        public Form1()
+        public DictionaryApp()
         {
             InitializeComponent();
         }
@@ -23,16 +23,9 @@ namespace WinForms
 
             if (listView.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("You pressed confirm.");
+                
             }
-            //else if (listView.DialogResult == DialogResult.Abort)
-            //{
-            //    MessageBox.Show("You pressed abort.");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("You pressed close.");
-            //}
+            
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

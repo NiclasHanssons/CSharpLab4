@@ -36,16 +36,17 @@
             this.listBoxLanguages = new System.Windows.Forms.ListBox();
             this.labelLanguages = new System.Windows.Forms.Label();
             this.buttonNewList = new System.Windows.Forms.Button();
+            this.buttonPractice = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonConfirm
             // 
             this.buttonConfirm.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonConfirm.Enabled = false;
-            this.buttonConfirm.Location = new System.Drawing.Point(380, 306);
+            this.buttonConfirm.Location = new System.Drawing.Point(380, 305);
             this.buttonConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonConfirm.Name = "buttonConfirm";
-            this.buttonConfirm.Size = new System.Drawing.Size(75, 33);
+            this.buttonConfirm.Size = new System.Drawing.Size(75, 25);
             this.buttonConfirm.TabIndex = 0;
             this.buttonConfirm.Text = "&Select";
             this.buttonConfirm.UseVisualStyleBackColor = true;
@@ -54,10 +55,10 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.buttonCancel.Location = new System.Drawing.Point(299, 306);
+            this.buttonCancel.Location = new System.Drawing.Point(299, 305);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 33);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 25);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "&Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -110,19 +111,30 @@
             // 
             // buttonNewList
             // 
-            this.buttonNewList.Location = new System.Drawing.Point(15, 308);
+            this.buttonNewList.Location = new System.Drawing.Point(15, 307);
             this.buttonNewList.Name = "buttonNewList";
-            this.buttonNewList.Size = new System.Drawing.Size(75, 33);
+            this.buttonNewList.Size = new System.Drawing.Size(75, 25);
             this.buttonNewList.TabIndex = 9;
             this.buttonNewList.Text = "&New list";
             this.buttonNewList.UseVisualStyleBackColor = true;
             this.buttonNewList.Click += new System.EventHandler(this.buttonNewList_Click);
             // 
+            // buttonPractice
+            // 
+            this.buttonPractice.Location = new System.Drawing.Point(96, 307);
+            this.buttonPractice.Name = "buttonPractice";
+            this.buttonPractice.Size = new System.Drawing.Size(75, 25);
+            this.buttonPractice.TabIndex = 10;
+            this.buttonPractice.Text = "&Practice";
+            this.buttonPractice.UseVisualStyleBackColor = true;
+            this.buttonPractice.Click += new System.EventHandler(this.buttonPractice_Click);
+            // 
             // ListViewDictionarys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 360);
+            this.ClientSize = new System.Drawing.Size(479, 339);
+            this.Controls.Add(this.buttonPractice);
             this.Controls.Add(this.buttonNewList);
             this.Controls.Add(this.labelLanguages);
             this.Controls.Add(this.listBoxLanguages);
@@ -133,7 +145,7 @@
             this.Controls.Add(this.buttonConfirm);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ListViewDictionarys";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "List view";
             this.Load += new System.EventHandler(this.ListView_Load);
             this.ResumeLayout(false);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.ListBox listBoxLanguages;
         private System.Windows.Forms.Label labelLanguages;
         private System.Windows.Forms.Button buttonNewList;
+        private System.Windows.Forms.Button buttonPractice;
     }
 }

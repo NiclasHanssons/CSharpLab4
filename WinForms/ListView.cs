@@ -22,6 +22,7 @@ namespace WinForms
             InitializeComponent();
         }
 
+        //Listar alla ordlistor i listBox, använder ShowLists metoden
         private void ListView_Load(object sender, EventArgs e)
         {
             string[] list = MethodsForWinFormApp.ShowLists();
@@ -31,6 +32,7 @@ namespace WinForms
             }
         }
 
+        //Event för listBox när ett item är selected
         private void listBoxDictionaries_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxDictionaries.SelectedIndex > 1)
@@ -45,12 +47,15 @@ namespace WinForms
             WordList languagesForWinForm = WordList.LoadList(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem));
 
             listBoxLanguages.Items.Clear();
+
+            //Lägger till språken från varje lista i en listBox
             for (int i = 0; i < languagesForWinForm.Languages.Length; i++)
             {
                 listBoxLanguages.Items.Add(languagesForWinForm.Languages[i]);
             }
         }
 
+        //Öppnar ett nytt form för att lägga till en ny lista och språk
         private void buttonNewList_Click(object sender, EventArgs e)
         {
             NewList addNewList = new NewList();
@@ -66,9 +71,9 @@ namespace WinForms
             }
         }
 
+        //Öppnar ett nytt form där alla ord skall listas
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            
             WordList selectedListToShowWords = WordList.LoadList(listBoxDictionaries.SelectedItem.ToString());
             WordTranslations showWordsInDataGrid  = new WordTranslations(selectedListToShowWords.Name);
 
@@ -77,6 +82,13 @@ namespace WinForms
             {
 
             }
+        }
+
+        private void buttonPractice_Click(object sender, EventArgs e)
+        {
+            NameOfDictionaryListView = listBoxDictionaries.SelectedItem.ToString();
+            Practice practiceView = new Practice(NameOfDictionaryListView);
+            practiceView.ShowDialog();
         }
     }
 }

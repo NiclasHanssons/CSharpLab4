@@ -18,6 +18,7 @@ namespace WinForms
             InitializeComponent();
         }
 
+        //Lägger till listnamn och språk i en ny lista och sparar den med Save metoden
         private void buttonNewListOk_Click(object sender, EventArgs e)
         {
             string listNameInput = textBoxNewList.Text;

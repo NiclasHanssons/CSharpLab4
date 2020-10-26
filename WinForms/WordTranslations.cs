@@ -13,6 +13,25 @@ namespace WinForms
 {
     public partial class WordTranslations : Form
     {
+        public void LoadWords()
+        {
+            WordTranslations loadListForWords = new WordTranslations(NameOfDictionary);
+            NameOfDictionary = loadListForWords.NameOfDictionary;
+
+            WordList wordList = WordList.LoadList(NameOfDictionary);
+            string[] wordsArray = MethodsForWinFormApp.ListWordsAlphabetically(NameOfDictionary);
+
+            foreach (var item in wordList.Languages)
+            {
+                dataGridViewWord.Columns.Add("Language", item);
+            }
+
+            //Lägger till alla ord i listan genom List metoden med delegat och lambda expression
+            wordList.List(0, x =>
+            {
+                dataGridViewWord.Rows.Add(x);
+            });
+        }
         public string NameOfDictionary { get; set; }
 
         public WordTranslations(string listName)
@@ -21,33 +40,33 @@ namespace WinForms
             InitializeComponent();
         }
 
+        //Laddar in markerad lista i en dataGridView
         private void WordTranslations_Load(object sender, EventArgs e)
         {
-            WordTranslations loadListForWordsTest = new WordTranslations(NameOfDictionary);
-            NameOfDictionary = loadListForWordsTest.NameOfDictionary;
+            LoadWords();
+        }
 
-            WordList testWordList = WordList.LoadList(NameOfDictionary);
-            string[] wordsArray = MethodsForWinFormApp.ListWordsAlphabetically(NameOfDictionary);
+        private void buttonAddWord_Click(object sender, EventArgs e)
+        {
+            AddNewWords addNewWordDataGrid = new AddNewWords(NameOfDictionary);
 
-            foreach (var item in testWordList.Languages)
+            if (addNewWordDataGrid.ShowDialog() == DialogResult.OK)
             {
-                dataGridViewWord.Columns.Add("Language", item);
+                dataGridViewWord.Rows.Clear();
+                dataGridViewWord.Columns.Clear();
+                LoadWords();
             }
+        }
 
-            testWordList.List(0, x =>
-            {
-                dataGridViewWord.Rows.Add(x);
-            });
-                
+        private void buttonRemoveWord_Click(object sender, EventArgs e)
+        {
+            WordList wordList = WordList.LoadList(NameOfDictionary);
+            DataGridViewSelectedCellCollection selectedCells = dataGridViewWord.SelectedCells;
 
-            
-            
-            //foreach (var item in MethodsForWinFormApp.ListWordsAlphabetically(NameOfDictionary))
-            //{
-            //    dataGridViewWord.Rows.Add(item);
-            //}
-
-
+            dataGridViewWord.Rows.RemoveAt(dataGridViewWord.SelectedRows[0].Index);
+            wordList.Remove(0, selectedCells[0].Value.ToString());
+            wordList.Save();
         }
     }
 }
+

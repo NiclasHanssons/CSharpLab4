@@ -58,9 +58,6 @@ namespace ClassLibrary
 
                 for (int i = 0; i < loadedList.Languages.Length; i++)
                 {
-                    Console.Write($"Write a word in {loadedList.Languages[i]}: ");
-                    word = Console.ReadLine();
-
                     if (word == "")
                     {
                         break;
@@ -156,7 +153,7 @@ namespace ClassLibrary
             Console.WriteLine($"Your score: {correctAnswersInProcent:F1}%");
         }
 
-        //Ej fixad för winform
+        //FUNGERAR
         public static string[] ListWordsAlphabetically(string listName)
         {
             WordList wordList = WordList.LoadList(listName);
