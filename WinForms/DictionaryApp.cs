@@ -23,14 +23,19 @@ namespace WinForms
 
             if (listView.ShowDialog() == DialogResult.OK)
             {
-                
+
             }
-            
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        //private void DictionaryApp_Load(object sender, EventArgs e)
+        //{
+        //    ListViewDictionarys listView = new ListViewDictionarys();
+        //    listView.ShowDialog();
+        //}
     }
 }

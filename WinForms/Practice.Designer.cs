@@ -37,17 +37,17 @@
             // 
             // labelLanguageAndWordToTranslate
             // 
-            this.labelLanguageAndWordToTranslate.AutoSize = true;
             this.labelLanguageAndWordToTranslate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLanguageAndWordToTranslate.Location = new System.Drawing.Point(259, 96);
+            this.labelLanguageAndWordToTranslate.Location = new System.Drawing.Point(12, 9);
             this.labelLanguageAndWordToTranslate.Name = "labelLanguageAndWordToTranslate";
-            this.labelLanguageAndWordToTranslate.Size = new System.Drawing.Size(53, 20);
+            this.labelLanguageAndWordToTranslate.Size = new System.Drawing.Size(635, 65);
             this.labelLanguageAndWordToTranslate.TabIndex = 0;
             this.labelLanguageAndWordToTranslate.Text = "label1";
+            this.labelLanguageAndWordToTranslate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBoxTranslation
             // 
-            this.textBoxTranslation.Location = new System.Drawing.Point(263, 141);
+            this.textBoxTranslation.Location = new System.Drawing.Point(202, 77);
             this.textBoxTranslation.Name = "textBoxTranslation";
             this.textBoxTranslation.Size = new System.Drawing.Size(251, 22);
             this.textBoxTranslation.TabIndex = 1;
@@ -57,14 +57,15 @@
             // 
             this.labelResult.AutoSize = true;
             this.labelResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelResult.Location = new System.Drawing.Point(259, 189);
+            this.labelResult.Location = new System.Drawing.Point(198, 102);
             this.labelResult.Name = "labelResult";
-            this.labelResult.Size = new System.Drawing.Size(0, 20);
+            this.labelResult.Size = new System.Drawing.Size(159, 20);
             this.labelResult.TabIndex = 2;
+            this.labelResult.Text = "Result of translation";
             // 
             // buttonRestart
             // 
-            this.buttonRestart.Location = new System.Drawing.Point(263, 257);
+            this.buttonRestart.Location = new System.Drawing.Point(202, 134);
             this.buttonRestart.Name = "buttonRestart";
             this.buttonRestart.Size = new System.Drawing.Size(75, 25);
             this.buttonRestart.TabIndex = 3;
@@ -75,7 +76,7 @@
             // buttonEndPractice
             // 
             this.buttonEndPractice.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.buttonEndPractice.Location = new System.Drawing.Point(394, 257);
+            this.buttonEndPractice.Location = new System.Drawing.Point(333, 134);
             this.buttonEndPractice.Name = "buttonEndPractice";
             this.buttonEndPractice.Size = new System.Drawing.Size(120, 25);
             this.buttonEndPractice.TabIndex = 4;
@@ -87,13 +88,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(659, 189);
             this.Controls.Add(this.buttonEndPractice);
             this.Controls.Add(this.buttonRestart);
             this.Controls.Add(this.labelResult);
             this.Controls.Add(this.textBoxTranslation);
             this.Controls.Add(this.labelLanguageAndWordToTranslate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Practice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Practice";
             this.Load += new System.EventHandler(this.Practice_Load);
             this.ResumeLayout(false);

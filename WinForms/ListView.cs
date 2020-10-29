@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace WinForms
 {
-
     public partial class ListViewDictionarys : Form
     {
         public string NameOfDictionaryListView { get; set; }
@@ -30,28 +29,42 @@ namespace WinForms
             {
                 listBoxDictionaries.Items.Add(Path.GetFileNameWithoutExtension(file));
             }
+            listBoxDictionaries.SelectedIndex = 0;
         }
 
         //Event för listBox när ett item är selected
         private void listBoxDictionaries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxDictionaries.SelectedIndex > 1)
+            if (listBoxDictionaries.SelectedItem != null)
             {
-                buttonConfirm.Enabled = true;
-            }
+                if (listBoxDictionaries.SelectedIndex > 1)
+                {
+                    buttonConfirm.Enabled = true;
+                }
 
-            //Anger antal ord i varje lista på Word count label
-            labelWordCount.Text = $"Word count: { MethodsForWinFormApp.CountWords(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem))}";
+                if (labelWordCount.Text != "" || MethodsForWinFormApp.CountWords(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem)) == 0)
+                {
+                    buttonPractice.Enabled = false;
+                }
 
-            //Anger vilka språk som finns i varje lista i en listbox
-            WordList languagesForWinForm = WordList.LoadList(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem));
+                if (MethodsForWinFormApp.CountWords(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem)) > 0)
+                {
+                    buttonPractice.Enabled = true;
+                }
 
-            listBoxLanguages.Items.Clear();
+                //Anger antal ord i varje lista på Word count label
+                labelWordCount.Text = $"Word count: { MethodsForWinFormApp.CountWords(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem))}";
 
-            //Lägger till språken från varje lista i en listBox
-            for (int i = 0; i < languagesForWinForm.Languages.Length; i++)
-            {
-                listBoxLanguages.Items.Add(languagesForWinForm.Languages[i]);
+                //Anger vilka språk som finns i varje lista i en listbox
+                WordList languagesForWinForm = WordList.LoadList(listBoxDictionaries.GetItemText(listBoxDictionaries.SelectedItem));
+
+                listBoxLanguages.Items.Clear();
+
+                //Lägger till språken från varje lista i en listBox
+                for (int i = 0; i < languagesForWinForm.Languages.Length; i++)
+                {
+                    listBoxLanguages.Items.Add(languagesForWinForm.Languages[i]);
+                }
             }
         }
 
@@ -78,10 +91,7 @@ namespace WinForms
             WordTranslations showWordsInDataGrid  = new WordTranslations(selectedListToShowWords.Name);
 
             NameOfDictionaryListView = listBoxDictionaries.SelectedItem.ToString();
-            if (showWordsInDataGrid.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            showWordsInDataGrid.ShowDialog();
         }
 
         private void buttonPractice_Click(object sender, EventArgs e)

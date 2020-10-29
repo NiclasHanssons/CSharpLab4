@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppFolder.cs" />
     <Compile Include="MethodsForConsoleApp.cs" />
     <Compile Include="MethodsForWinFormApp.cs" />
     <Compile Include="WordList.cs" />

@@ -49,10 +49,13 @@
             this.dataGridViewAddNewWords.RowTemplate.Height = 24;
             this.dataGridViewAddNewWords.Size = new System.Drawing.Size(307, 207);
             this.dataGridViewAddNewWords.TabIndex = 0;
+            this.dataGridViewAddNewWords.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewAddNewWords_CellBeginEdit);
+            this.dataGridViewAddNewWords.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAddNewWords_CellEndEdit);
             // 
             // buttonAdd
             // 
             this.buttonAdd.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonAdd.Enabled = false;
             this.buttonAdd.Location = new System.Drawing.Point(221, 214);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 25);

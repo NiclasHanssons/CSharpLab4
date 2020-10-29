@@ -33,7 +33,8 @@ namespace WinForms
             Word word = wordListForPractice.GetWordToPractice();
 
             labelLanguageAndWordToTranslate.Text = $"Translate the {wordListForPractice.Languages[word.FromLanguage]} word" +
-                $" '{word.Translations[0]}' to {wordListForPractice.Languages[word.ToLanguage]} and press enter.";
+                $" '{word.Translations[0]}' \n" +
+                $" to {wordListForPractice.Languages[word.ToLanguage]} and press enter.";
 
             CorrectTranslationWord = word.Translations[1];
         }

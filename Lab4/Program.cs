@@ -15,6 +15,7 @@ namespace Lab4
     {
         private static void MenuList()
         {
+            Console.WriteLine();
             Console.WriteLine("Use any of the following parameters:");
             Console.WriteLine("-lists");
             Console.WriteLine("-new <list name> <language 1> <language 2>..<language n>");
@@ -30,34 +31,42 @@ namespace Lab4
             switch (listChoice)
             {
                 case "-lists":
+                    Console.WriteLine();
                     MethodsForConsoleApp.ShowLists();
                     break;
 
                 case "-new":
+                    Console.WriteLine();
                     MethodsForConsoleApp.NewListAndLanguages(argsArguments);
                     break;
 
                 case "-add":
+                    Console.WriteLine();
                     MethodsForConsoleApp.AddWordsToList(argsArguments[1]);
                     break;
 
                 case "-remove":
+                    Console.WriteLine();
                     MethodsForConsoleApp.RemoveWords(argsArguments[1], argsArguments);
                     break;
 
                 case "-words":
+                    Console.WriteLine();
                     MethodsForConsoleApp.ListWordsAlphabetically(argsArguments[1], argsArguments);
                     break;
 
                 case "-count":
+                    Console.WriteLine();
                     MethodsForConsoleApp.CountWords(argsArguments[1]);
                     break;
 
                 case "-practice":
+                    Console.WriteLine();
                     MethodsForConsoleApp.Practice(argsArguments[1]);
                     break;
 
                 default:
+                    Console.WriteLine();
                     Console.WriteLine("Wrong input, please use the following commands.");
                     MenuList();
                     break;
@@ -67,17 +76,26 @@ namespace Lab4
         {
             WordList.CheckForLocalDirectory();
 
-            if (args.Length != 0)
+            try
             {
-            string argsInput = args[0].ToString();
-            ConsoleAppListChoice(argsInput, args);
-            }
+                if (args.Length != 0)
+                {
+                    string argsInput = args[0].ToString().ToLower();
+                    ConsoleAppListChoice(argsInput, args);
+                }
 
-            else
+                else
+                {
+                    MenuList();
+                }
+            }
+            catch (Exception)
             {
+                Console.WriteLine();
+                Console.WriteLine("Wrong input, please use the following commands.");
+                Console.WriteLine();
                 MenuList();
             }
-
             Console.ReadKey();
         }
     }

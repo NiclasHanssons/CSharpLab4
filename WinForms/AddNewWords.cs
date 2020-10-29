@@ -22,7 +22,7 @@ namespace WinForms
             InitializeComponent();
             NameOfList = nameOfList;
         }
-        
+
         private void AddNewWords_Load(object sender, EventArgs e)
         {
             WordList loadedList = WordList.LoadList(NameOfList);
@@ -51,5 +51,47 @@ namespace WinForms
             CurrentWordList.Save();
         }
 
+        private void dataGridViewAddNewWords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (dataGridViewAddNewWords.SelectedCells[0].ColumnIndex == dataGridViewAddNewWords.Columns.Count - 1 &&
+                dataGridViewAddNewWords.SelectedCells[0].RowIndex == dataGridViewAddNewWords.Rows.Count - 1)
+            {
+                foreach (DataGridViewRow row in dataGridViewAddNewWords.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.ColumnIndex == 1)
+                        {
+                            if (cell.RowIndex != dataGridViewAddNewWords.Rows.Count - 1)
+                            {
+                                if (string.IsNullOrWhiteSpace((string)cell.Value))
+                                {
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+                buttonAdd.Enabled = true;
+            }
+        }
+
+        private void dataGridViewAddNewWords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewAddNewWords.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.ColumnIndex == 1)
+                    {
+                        if (string.IsNullOrWhiteSpace((string)cell.Value))
+                        {
+                            buttonAdd.Enabled = false;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

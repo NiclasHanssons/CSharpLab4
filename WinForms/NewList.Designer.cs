@@ -42,6 +42,10 @@
             this.textBoxNewList.Name = "textBoxNewList";
             this.textBoxNewList.Size = new System.Drawing.Size(240, 22);
             this.textBoxNewList.TabIndex = 0;
+            this.textBoxNewList.Text = "Enter name of word list";
+            this.textBoxNewList.TextChanged += new System.EventHandler(this.textBoxNewList_TextChanged);
+            this.textBoxNewList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNewList_KeyPress);
+            this.textBoxNewList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxNewList_MouseDown);
             // 
             // labelTitleNewList
             // 
@@ -64,6 +68,7 @@
             // buttonNewListOk
             // 
             this.buttonNewListOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonNewListOk.Enabled = false;
             this.buttonNewListOk.Location = new System.Drawing.Point(177, 226);
             this.buttonNewListOk.Name = "buttonNewListOk";
             this.buttonNewListOk.Size = new System.Drawing.Size(75, 25);
@@ -89,6 +94,9 @@
             this.textBoxLanguages.Name = "textBoxLanguages";
             this.textBoxLanguages.Size = new System.Drawing.Size(240, 132);
             this.textBoxLanguages.TabIndex = 6;
+            this.textBoxLanguages.Text = "Enter at leaste two languages";
+            this.textBoxLanguages.TextChanged += new System.EventHandler(this.textBoxLanguages_TextChanged);
+            this.textBoxLanguages.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxLanguages_MouseDown);
             // 
             // NewList
             // 

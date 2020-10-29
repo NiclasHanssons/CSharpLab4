@@ -24,7 +24,7 @@ namespace ClassLibrary
         {
             if (File.Exists(WordList.LocalAppFolder + argsArguments[1] + ".dat"))
             {
-                Console.WriteLine($"File {argsArguments[1]} already exists, please try <-Add> <{argsArguments[1]}> to add words.");
+                Console.WriteLine($"Dictionary {argsArguments[1]} already exists, please try <-Add> <{argsArguments[1]}> to add words.");
                 return;
             }
 

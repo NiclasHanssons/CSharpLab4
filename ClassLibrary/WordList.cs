@@ -29,6 +29,7 @@ namespace ClassLibrary
             Languages = languages;
         }
 
+        //Kollar vad projektet heter och skapar en mapp i AppData\Local för användaren
         public static void CheckForLocalDirectory()
         {
             string ProjectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
@@ -36,7 +37,7 @@ namespace ClassLibrary
             Directory.CreateDirectory(LocalAppFolder);
         }
 
-        //Fungerar
+        //Tar fram alla ordlistor som ligger i den skapade mappen
         public static string[] GetLists()
         {
             CheckForLocalDirectory();
@@ -44,7 +45,7 @@ namespace ClassLibrary
             return files;
         }
 
-        //Fungerar
+        //Sparar ny lista och ord till befintliga listor
         public void Save()
         {
             string fileName = Name;
@@ -62,9 +63,9 @@ namespace ClassLibrary
             {
                 using (StreamWriter sw = new StreamWriter(LocalAppFolder + newList))
                 {
-                    foreach (var item in Languages)
+                    foreach (var language in Languages)
                     {
-                        sw.Write(item + ";");
+                        sw.Write(language.ToLower() + ";");
                     }
                 }
             }
@@ -77,14 +78,14 @@ namespace ClassLibrary
 
                     foreach (var ord in word.Translations)
                     {
-                        sw.Write(ord + ";");
+                        sw.Write(ord.ToLower() + ";");
 
                     }
                 }
             }
         }
 
-        //Fungerar
+        //Laddar en ordlista
         public static WordList LoadList(string name)
         {
             string[] loadedListLangugages;
@@ -103,17 +104,17 @@ namespace ClassLibrary
             }
         }
 
-        //Fungerar
+        //Lägger till ord i ordlista
         public void Add(params string[] translations)
         {
-            //if (translations.Length % Languages.Length != 0)
-            //{
-            //    throw new Exception("Not the correct number of words");
-            //}
+            if (translations.Length % Languages.Length != 0)
+            {
+                throw new Exception("Not the correct number of words");
+            }
             words.Add(new Word(translations));
         }
 
-        //Fungerar
+        //Tar bord från ordlista
         public bool Remove(int translation, string word)
         {
             LoadList(Name);
@@ -131,13 +132,13 @@ namespace ClassLibrary
             return false;
         }
 
-        //Fungerar
+        //Anger antalet ord i en ordlista
         public int Count()
         {
             return words.Count();
         }
 
-        //Fungerar
+        //Listar alla ord i en ordlista och sorterar efter språk
         public void List(int sortByTranslation, Action<string[]> showTranslations)
         {
             List<Word> sortedListOfWords = words.OrderBy(word => word.Translations[sortByTranslation]).ToList();
@@ -148,7 +149,7 @@ namespace ClassLibrary
             }
         }
 
-        //Fungerar
+        //Tar fram ett slumpat språk och ord, be användaren att översätta till ett slumpvalt språk i ordlistan
         public Word GetWordToPractice()
         {
             Random rndLanguage = new Random();

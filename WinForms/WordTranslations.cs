@@ -31,6 +31,12 @@ namespace WinForms
             {
                 dataGridViewWord.Rows.Add(x);
             });
+
+            if (dataGridViewWord.Rows.Count > 0)
+            {
+                buttonRemoveWord.Enabled = true;
+            }
+
         }
         public string NameOfDictionary { get; set; }
 
@@ -66,6 +72,16 @@ namespace WinForms
             dataGridViewWord.Rows.RemoveAt(dataGridViewWord.SelectedRows[0].Index);
             wordList.Remove(0, selectedCells[0].Value.ToString());
             wordList.Save();
+
+            if (dataGridViewWord.RowCount == 0)
+            {
+                buttonRemoveWord.Enabled = false;
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
