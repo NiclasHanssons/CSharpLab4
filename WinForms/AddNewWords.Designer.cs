@@ -84,6 +84,7 @@
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.dataGridViewAddNewWords);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "AddNewWords";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add new words";

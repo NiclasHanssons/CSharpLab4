@@ -133,6 +133,7 @@
             this.Controls.Add(this.buttonConfirm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(490, 390);
             this.Name = "ListViewDictionarys";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

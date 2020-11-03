@@ -110,6 +110,7 @@
             this.Controls.Add(this.labelTitleNewList);
             this.Controls.Add(this.textBoxNewList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(282, 307);
             this.Name = "NewList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -95,6 +95,7 @@
             this.Controls.Add(this.textBoxTranslation);
             this.Controls.Add(this.labelLanguageAndWordToTranslate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(677, 236);
             this.Name = "Practice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
