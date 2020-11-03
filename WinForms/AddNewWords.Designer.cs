@@ -43,6 +43,7 @@
             this.dataGridViewAddNewWords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewAddNewWords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAddNewWords.Location = new System.Drawing.Point(0, 1);
+            this.dataGridViewAddNewWords.MultiSelect = false;
             this.dataGridViewAddNewWords.Name = "dataGridViewAddNewWords";
             this.dataGridViewAddNewWords.RowHeadersVisible = false;
             this.dataGridViewAddNewWords.RowHeadersWidth = 51;

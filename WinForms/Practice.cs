@@ -33,10 +33,10 @@ namespace WinForms
             Word word = wordListForPractice.GetWordToPractice();
 
             labelLanguageAndWordToTranslate.Text = $"Translate the {wordListForPractice.Languages[word.FromLanguage]} word" +
-                $" '{word.Translations[0]}' \n" +
+                $" '{word.Translations[word.FromLanguage]}' \n" +
                 $" to {wordListForPractice.Languages[word.ToLanguage]} and press enter.";
 
-            CorrectTranslationWord = word.Translations[1];
+            CorrectTranslationWord = word.Translations[word.ToLanguage];
         }
 
         private void Practice_Load(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace WinForms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (textBoxTranslation.Text == CorrectTranslationWord)
+                if (textBoxTranslation.Text.ToLower() == CorrectTranslationWord.ToLower())
                 {
                     labelResult.Text = $"Corret translation";
                     correctTranslation++;

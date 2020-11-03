@@ -72,7 +72,7 @@
             this.buttonNewListOk.Location = new System.Drawing.Point(177, 226);
             this.buttonNewListOk.Name = "buttonNewListOk";
             this.buttonNewListOk.Size = new System.Drawing.Size(75, 25);
-            this.buttonNewListOk.TabIndex = 4;
+            this.buttonNewListOk.TabIndex = 2;
             this.buttonNewListOk.Text = "&OK";
             this.buttonNewListOk.UseVisualStyleBackColor = true;
             this.buttonNewListOk.Click += new System.EventHandler(this.buttonNewListOk_Click);
@@ -83,7 +83,7 @@
             this.buttonNewListCancel.Location = new System.Drawing.Point(12, 226);
             this.buttonNewListCancel.Name = "buttonNewListCancel";
             this.buttonNewListCancel.Size = new System.Drawing.Size(75, 25);
-            this.buttonNewListCancel.TabIndex = 5;
+            this.buttonNewListCancel.TabIndex = 3;
             this.buttonNewListCancel.Text = "&Cancel";
             this.buttonNewListCancel.UseVisualStyleBackColor = true;
             // 
@@ -93,8 +93,8 @@
             this.textBoxLanguages.Multiline = true;
             this.textBoxLanguages.Name = "textBoxLanguages";
             this.textBoxLanguages.Size = new System.Drawing.Size(240, 132);
-            this.textBoxLanguages.TabIndex = 6;
-            this.textBoxLanguages.Text = "Enter at leaste two languages";
+            this.textBoxLanguages.TabIndex = 1;
+            this.textBoxLanguages.Text = "Enter at leaste two languages on seperate lines";
             this.textBoxLanguages.TextChanged += new System.EventHandler(this.textBoxLanguages_TextChanged);
             this.textBoxLanguages.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxLanguages_MouseDown);
             // 
@@ -110,6 +110,7 @@
             this.Controls.Add(this.labelTitleNewList);
             this.Controls.Add(this.textBoxNewList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(282, 307);
             this.Name = "NewList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "New list";

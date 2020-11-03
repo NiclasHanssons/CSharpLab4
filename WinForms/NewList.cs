@@ -1,15 +1,8 @@
 ﻿using ClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace WinForms
 {
@@ -26,7 +19,7 @@ namespace WinForms
             string listNameInput = textBoxNewList.Text;
             string[] newLanguages = textBoxLanguages.Lines.ToArray();
 
-            if (textBoxLanguages.Lines.Length < 2)
+            if (textBoxLanguages.Lines.Length < 2 || textBoxLanguages.Lines.Contains(""))
             {
                 MessageBox.Show("Please add atleast two languages.", "Not enough languages");
                 NewList wrongInput = new NewList();

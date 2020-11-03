@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.buttonConfirm = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.labelWordLists = new System.Windows.Forms.Label();
             this.labelWordCount = new System.Windows.Forms.Label();
             this.listBoxDictionaries = new System.Windows.Forms.ListBox();
@@ -42,25 +41,15 @@
             // buttonConfirm
             // 
             this.buttonConfirm.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonConfirm.Enabled = false;
             this.buttonConfirm.Location = new System.Drawing.Point(380, 305);
             this.buttonConfirm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 25);
-            this.buttonConfirm.TabIndex = 0;
+            this.buttonConfirm.TabIndex = 3;
             this.buttonConfirm.Text = "&Select";
             this.buttonConfirm.UseVisualStyleBackColor = true;
             this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.buttonCancel.Location = new System.Drawing.Point(299, 305);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 25);
-            this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "&Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // labelWordLists
             // 
@@ -97,7 +86,7 @@
             this.listBoxLanguages.Location = new System.Drawing.Point(240, 41);
             this.listBoxLanguages.Name = "listBoxLanguages";
             this.listBoxLanguages.Size = new System.Drawing.Size(215, 260);
-            this.listBoxLanguages.TabIndex = 7;
+            this.listBoxLanguages.TabIndex = 0;
             // 
             // labelLanguages
             // 
@@ -113,7 +102,7 @@
             this.buttonNewList.Location = new System.Drawing.Point(15, 307);
             this.buttonNewList.Name = "buttonNewList";
             this.buttonNewList.Size = new System.Drawing.Size(75, 25);
-            this.buttonNewList.TabIndex = 9;
+            this.buttonNewList.TabIndex = 1;
             this.buttonNewList.Text = "&New list";
             this.buttonNewList.UseVisualStyleBackColor = true;
             this.buttonNewList.Click += new System.EventHandler(this.buttonNewList_Click);
@@ -124,7 +113,7 @@
             this.buttonPractice.Location = new System.Drawing.Point(96, 307);
             this.buttonPractice.Name = "buttonPractice";
             this.buttonPractice.Size = new System.Drawing.Size(75, 25);
-            this.buttonPractice.TabIndex = 10;
+            this.buttonPractice.TabIndex = 2;
             this.buttonPractice.Text = "&Practice";
             this.buttonPractice.UseVisualStyleBackColor = true;
             this.buttonPractice.Click += new System.EventHandler(this.buttonPractice_Click);
@@ -133,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 340);
+            this.ClientSize = new System.Drawing.Size(472, 343);
             this.Controls.Add(this.buttonPractice);
             this.Controls.Add(this.buttonNewList);
             this.Controls.Add(this.labelLanguages);
@@ -141,13 +130,13 @@
             this.Controls.Add(this.listBoxDictionaries);
             this.Controls.Add(this.labelWordCount);
             this.Controls.Add(this.labelWordLists);
-            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonConfirm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(490, 390);
             this.Name = "ListViewDictionarys";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "List view";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dictionary";
             this.Load += new System.EventHandler(this.ListView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,7 +146,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonConfirm;
-        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label labelWordLists;
         private System.Windows.Forms.Label labelWordCount;
         private System.Windows.Forms.ListBox listBoxDictionaries;

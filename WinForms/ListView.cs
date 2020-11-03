@@ -1,13 +1,6 @@
 ﻿using ClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WinForms
@@ -24,12 +17,18 @@ namespace WinForms
         //Listar alla ordlistor i listBox, använder ShowLists metoden
         private void ListView_Load(object sender, EventArgs e)
         {
+            listBoxLanguages.TabStop = false;
+
             string[] list = MethodsForWinFormApp.ShowLists();
             foreach (string file in list)
             {
                 listBoxDictionaries.Items.Add(Path.GetFileNameWithoutExtension(file));
             }
-            listBoxDictionaries.SelectedIndex = 0;
+
+            if (listBoxDictionaries.Items.Count != 0)
+            {
+                listBoxDictionaries.SelectedIndex = 0;
+            }
         }
 
         //Event för listBox när ett item är selected
@@ -37,6 +36,11 @@ namespace WinForms
         {
             if (listBoxDictionaries.SelectedItem != null)
             {
+                if (listBoxDictionaries.Items.Count > 0)
+                {
+                    buttonConfirm.Enabled = true;
+                }
+
                 if (listBoxDictionaries.SelectedIndex > 1)
                 {
                     buttonConfirm.Enabled = true;
@@ -72,7 +76,7 @@ namespace WinForms
         private void buttonNewList_Click(object sender, EventArgs e)
         {
             NewList addNewList = new NewList();
-            
+
             if (addNewList.ShowDialog() == DialogResult.OK)
             {
                 listBoxDictionaries.Items.Clear();
@@ -88,7 +92,7 @@ namespace WinForms
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             WordList selectedListToShowWords = WordList.LoadList(listBoxDictionaries.SelectedItem.ToString());
-            WordTranslations showWordsInDataGrid  = new WordTranslations(selectedListToShowWords.Name);
+            WordTranslations showWordsInDataGrid = new WordTranslations(selectedListToShowWords.Name);
 
             NameOfDictionaryListView = listBoxDictionaries.SelectedItem.ToString();
             showWordsInDataGrid.ShowDialog();

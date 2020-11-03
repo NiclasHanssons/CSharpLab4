@@ -32,11 +32,8 @@
             this.buttonAddWord = new System.Windows.Forms.Button();
             this.buttonRemoveWord = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWord)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewWord
@@ -50,7 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewWord.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewWord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewWord.Location = new System.Drawing.Point(0, 31);
+            this.dataGridViewWord.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewWord.MultiSelect = false;
             this.dataGridViewWord.Name = "dataGridViewWord";
             this.dataGridViewWord.ReadOnly = true;
@@ -58,8 +55,9 @@
             this.dataGridViewWord.RowHeadersWidth = 51;
             this.dataGridViewWord.RowTemplate.Height = 24;
             this.dataGridViewWord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewWord.Size = new System.Drawing.Size(883, 381);
+            this.dataGridViewWord.Size = new System.Drawing.Size(883, 412);
             this.dataGridViewWord.TabIndex = 2;
+            this.dataGridViewWord.TabStop = false;
             // 
             // buttonAddWord
             // 
@@ -67,7 +65,7 @@
             this.buttonAddWord.Location = new System.Drawing.Point(795, 420);
             this.buttonAddWord.Name = "buttonAddWord";
             this.buttonAddWord.Size = new System.Drawing.Size(75, 25);
-            this.buttonAddWord.TabIndex = 3;
+            this.buttonAddWord.TabIndex = 0;
             this.buttonAddWord.Text = "&Add word";
             this.buttonAddWord.UseVisualStyleBackColor = true;
             this.buttonAddWord.Click += new System.EventHandler(this.buttonAddWord_Click);
@@ -79,7 +77,7 @@
             this.buttonRemoveWord.Location = new System.Drawing.Point(671, 420);
             this.buttonRemoveWord.Name = "buttonRemoveWord";
             this.buttonRemoveWord.Size = new System.Drawing.Size(118, 25);
-            this.buttonRemoveWord.TabIndex = 4;
+            this.buttonRemoveWord.TabIndex = 1;
             this.buttonRemoveWord.Text = "&Remove word";
             this.buttonRemoveWord.UseVisualStyleBackColor = true;
             this.buttonRemoveWord.Click += new System.EventHandler(this.buttonRemoveWord_Click);
@@ -87,28 +85,11 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(882, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
-            this.exitToolStripMenuItem.Text = "&Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -117,7 +98,7 @@
             this.button1.Location = new System.Drawing.Point(12, 420);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 7;
+            this.button1.TabIndex = 2;
             this.button1.Text = "&Back";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -138,8 +119,6 @@
             this.Text = "Word translations";
             this.Load += new System.EventHandler(this.WordTranslations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWord)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,8 +129,6 @@
         private System.Windows.Forms.Button buttonAddWord;
         private System.Windows.Forms.Button buttonRemoveWord;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button button1;
     }
 }

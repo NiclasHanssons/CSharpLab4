@@ -79,7 +79,7 @@
             this.buttonEndPractice.Location = new System.Drawing.Point(333, 134);
             this.buttonEndPractice.Name = "buttonEndPractice";
             this.buttonEndPractice.Size = new System.Drawing.Size(120, 25);
-            this.buttonEndPractice.TabIndex = 4;
+            this.buttonEndPractice.TabIndex = 2;
             this.buttonEndPractice.Text = "&End practice";
             this.buttonEndPractice.UseVisualStyleBackColor = true;
             this.buttonEndPractice.Click += new System.EventHandler(this.buttonEndPractice_Click);
@@ -95,6 +95,7 @@
             this.Controls.Add(this.textBoxTranslation);
             this.Controls.Add(this.labelLanguageAndWordToTranslate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(677, 236);
             this.Name = "Practice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Practice";

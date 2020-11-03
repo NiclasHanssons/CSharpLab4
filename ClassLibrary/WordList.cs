@@ -17,7 +17,6 @@ namespace ClassLibrary
 
         public static string LocalAppFolder { get; private set; }
 
-
         public WordList()
         {
 
@@ -152,19 +151,19 @@ namespace ClassLibrary
         //Tar fram ett slumpat språk och ord, be användaren att översätta till ett slumpvalt språk i ordlistan
         public Word GetWordToPractice()
         {
-            Random rndLanguage = new Random();
-            int fromLanguage = rndLanguage.Next(0, Languages.Length);
-            int toLanguage = rndLanguage.Next(0, Languages.Length);
+            Random rnd = new Random();
+            int fromLanguage = rnd.Next(0, Languages.Length);
+            int toLanguage = rnd.Next(0, Languages.Length);
+
+            int randomWord = rnd.Next(words.Count);
+            Word word = words[randomWord];
 
             while (fromLanguage == toLanguage)
             {
-                toLanguage = rndLanguage.Next(0, Languages.Length);
+                toLanguage = rnd.Next(0, Languages.Length);
             }
-
-            string[] wordsToPracticeWith = new string[2] { words[fromLanguage].Translations[fromLanguage],
-                words[fromLanguage].Translations[toLanguage] };
             
-            Word wordsForPractice = new Word(fromLanguage, toLanguage, wordsToPracticeWith);
+            Word wordsForPractice = new Word(fromLanguage, toLanguage, word.Translations);
 
             return wordsForPractice;
         }

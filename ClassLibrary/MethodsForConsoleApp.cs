@@ -130,25 +130,35 @@ namespace ClassLibrary
             do
             {
                 Console.Clear();
-                Console.WriteLine($"Practice vocabulary by writing the translation, quit be press \"enter\" on a empty line.");
+                Console.WriteLine($"Practice vocabulary by writing the translation, quit by pressing \"enter\" on a empty line.");
                 Console.WriteLine("After practice you will see your result.");
                 Console.WriteLine();
                 
                 Word word = wordForPractice.GetWordToPractice();
-                Console.WriteLine($"Word in {wordForPractice.Languages[word.FromLanguage]}: {word.Translations[0]}");
+                Console.WriteLine($"Word in {wordForPractice.Languages[word.FromLanguage]}: {word.Translations[word.FromLanguage]}");
                 Console.Write($"To {wordForPractice.Languages[word.ToLanguage]}: ");
-                wordTranslated = Console.ReadLine();
-                numberOfWordsTranslated++;
+                wordTranslated = Console.ReadLine().ToLower();
                 
                 if (wordTranslated == "")
                 {
                     break;
                 }
 
-                if (wordTranslated == word.Translations[1])
+                if (wordTranslated == word.Translations[word.ToLanguage])
                 {
+                    Console.WriteLine("Correct translation! Press a key to continue.");
+                    Console.ReadKey();
                     correctTranslation++;
                 }
+
+                else
+                {
+                    Console.WriteLine("Wrong translation, press a key to continue.");
+                    Console.ReadKey();
+
+                }
+                numberOfWordsTranslated++;
+
 
             } while (wordTranslated != "");
 
@@ -164,7 +174,7 @@ namespace ClassLibrary
         public static void ListWordsAlphabetically(string listName, string[] argsArgument)
         {
             WordList sortByLanguage = WordList.LoadList(listName);
-            string language = argsArgument[2];
+            string language = argsArgument[2].ToLower();
             int languageIndex = 0;
             
             for (int i = 0; i < sortByLanguage.Languages.Length; i++)

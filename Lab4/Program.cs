@@ -16,7 +16,7 @@ namespace Lab4
         private static void MenuList()
         {
             Console.WriteLine();
-            Console.WriteLine("Use any of the following parameters:");
+            Console.WriteLine("Use any of the following commands:");
             Console.WriteLine("-lists");
             Console.WriteLine("-new <list name> <language 1> <language 2>..<language n>");
             Console.WriteLine("-add <list name>");

@@ -36,6 +36,8 @@ namespace WinForms
             {
                 dataGridViewAddNewWords.Rows.Add(item);
             }
+
+            dataGridViewAddNewWords.CurrentCell = dataGridViewAddNewWords[1, 0];
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
